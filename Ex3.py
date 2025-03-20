@@ -1,41 +1,32 @@
-# zaimportuj bibliotekę ’networkx’ do rysowania grafów
-# nazwij ją ’nx’
-# dalej można z niej korzystać w kodzie pod nazwą ’nx’
-import networkx as nx
-
-# zaimportuj bibliotekę ’pyplot’ z pakietu ’matplotlib’
-# nazwij ją ’plt’
-# dalej można z niej korzystać w kodzie pod nazwą ’plt’
+import numpy as np
 import matplotlib.pyplot as plt
 
-# utwórz obiekt reprezentujący graf ’nx.Graph()’
-# przypisz go do zmiennej ’G’
-G = nx.Graph()
+T = float(input("Podaj stałą czasową T: "))
+k = float(input("Podaj wzmocnienie k: "))
 
-# wykorzystaj funkcję ’add_edge’ obiektu/grafu ’G’
-# funkcja dodaje do grafu krawędź między dwoma wierzchołkami
-# nazwy wierzchołków podane są w argumentach funkcji
-G.add_edge('A', 'B')
-G.add_edge('B', 'D')
-G.add_edge('A', 'C')
-G.add_edge('C', 'D')
 
-# wybierz typ układu wierzchołków ’spring_layout’
-# przypisz go do zmiennej ’pos’
-pos = nx.spring_layout(G)
+t = np.linspace(0, 5*T, 500)
 
-# wyświetl wierzchołki
-# wierzchołki są w pozycjach zadanych przez ’pos’
-# wierzchołki mają rozmiar ’500’
-nx.draw_networkx_nodes(G, pos, node_size = 500)
 
-# wyświetl etykiety wierzchołków
-# etykiety są w pozycjach zadanych przez ’pos’
-nx.draw_networkx_labels(G, pos)
+y_step = k * (t - T +T * np.exp(-t / T))
+y_impulse = k * (1 - np.exp(-t / T))
 
-# wyświetl krawędzie grafu
-# wierzchołki są w pozycjach zadanych przez ’pos’
-nx.draw_networkx_edges(G, pos)
 
-# wyświetl graf
+plt.figure(figsize=(10, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t, y_step, label="Odpowiedź na skok jednostkowy", color='blue')
+plt.xlabel("Czas [s]")
+plt.ylabel("y(t)")
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.plot(t, y_impulse, label="Odpowiedź na impuls Diraca", color='orange')
+plt.xlabel("Czas [s]")
+plt.ylabel("y(t)")
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
 plt.show()

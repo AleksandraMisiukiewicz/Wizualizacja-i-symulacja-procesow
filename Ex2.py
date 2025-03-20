@@ -1,14 +1,32 @@
-# zaimportuj bibliotekę ’pyplot’ z pakietu ’matplotlib’
-# nazwij ją ’plt’
-# dalej można z niej korzystać w kodzie pod nazwą ’plt’
+import numpy as np
 import matplotlib.pyplot as plt
-# utwórz wykres
+
+T = float(input("Podaj stałą czasową T: "))
+k = float(input("Podaj wzmocnienie k: "))
 
 
-# funkcja ’plt.subplots’ zwraca dwa argumenty
-# pierwszy ignorujemy, drugi zapisujemy do zmiennej ’axes’
-_, axes = plt.subplots()
-# tworzymy wykres z punktów (0, 0), (1, 2), (2, 4), itd.
-axes.plot([0, 1, 2, 3, 4, 5, 6], [0, 2, 4, 6, 4, 2, 0])
-# wyświetlamy wykres
+t = np.linspace(0, 5*T, 500)
+
+
+y_step = k * (1 - np.exp(-t / T))
+y_impulse = (k / T) * np.exp(-t / T)
+
+
+plt.figure(figsize=(10, 5))
+
+plt.subplot(1, 2, 1)
+plt.plot(t, y_step, label="Odpowiedź na skok jednostkowy", color='blue')
+plt.xlabel("Czas [s]")
+plt.ylabel("y(t)")
+plt.grid(True)
+plt.legend()
+
+plt.subplot(1, 2, 2)
+plt.plot(t, y_impulse, label="Odpowiedź na impuls Diraca", color='orange')
+plt.xlabel("Czas [s]")
+plt.ylabel("y(t)")
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
 plt.show()
