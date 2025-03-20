@@ -10,22 +10,22 @@ _,ax = plt.subplots(figsize=(10, 5))
 
 plot_x = input("Czy chcesz wyświetlić funkcję y=x? (y/n): ")
 if plot_x.lower() == "y":
-    color = input("Podaj kolor wykresu (np. 'red', 'blue', 'green'): ")
+    color = input("Podaj kolor wykresu ('red', 'blue', 'green', 'cyan', 'magenta', 'yellow', 'black'): ")
     ax.plot(x, x, color=color, label='y=x')
 
 plot_sin = input("Czy chcesz wyświetlić funkcję y=sin(x)? (y/n): ")
 if plot_sin.lower() == "y":
-    color = input("Podaj kolor wykresu (np. 'red', 'blue', 'green'): ")
+    color = input("Podaj kolor wykresu ('red', 'blue', 'green', 'cyan', 'magenta', 'yellow', 'black'): ")
     ax.plot(x, np.sin(x), color=color, label='y=sin(x)', linestyle='--')
 
 plot_cos = input("Czy chcesz wyświetlić funkcję y=cos(x)? (y/n): ")
 if plot_cos.lower() == "y":
-    color = input("Podaj kolor wykresu (np. 'red', 'blue', 'green'): ")
+    color = input("Podaj kolor wykresu ('red', 'blue', 'green', 'cyan', 'magenta', 'yellow', 'black'): ")
     ax.plot(x, np.cos(x), color=color, label='y=cos(x)', linestyle='-.')
 
 plotx3 = input("Czy chcesz wyświetlić funkcję y=x³? (y/n): ")
 if plotx3.lower() == "y":
-    color = input("Podaj kolor wykresu (np. 'red', 'blue', 'green'): ")
+    color = input("Podaj kolor wykresu ('red', 'blue', 'green', 'cyan', 'magenta', 'yellow', 'black'): ")
     ax.plot(x, x**3, color=color, label='y=x³', linestyle=':')
 
 
