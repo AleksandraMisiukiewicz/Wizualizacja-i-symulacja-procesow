@@ -38,15 +38,16 @@ def plot_trajectory(trajectory, title="Robot trajectory"):
     plt.show()
 
 T = float(input("Podaj krok dyskretyzacji (np. 0.1): "))
-total_time = float(input("Podaj całkowity czas symulacji: "))
 num_phases = int(input("Podaj liczbę faz ruchu: "))
 phases = []
+total_time=0
 for i in range(num_phases):
     w1 = float(input(f"Podaj prędkość liniową dla fazy {i + 1}: "))
     w2 = float(input(f"Podaj prędkość obrotową dla fazy {i + 1}: "))
     duration = float(input(f"Podaj czas trwania fazy {i + 1}: "))
     phases.append((w1, w2, duration))
+    total_time += duration
 
-# Symulacja i wykres
+
 trajectory = simulate_robot_motion(phases, T, total_time)
 plot_trajectory(trajectory, "User-defined Motion")
